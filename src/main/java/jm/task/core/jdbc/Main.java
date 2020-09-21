@@ -1,13 +1,15 @@
 package jm.task.core.jdbc;
 
 
-import jm.task.core.jdbc.model.User;
+import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
+//import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.service.UserService;
 import jm.task.core.jdbc.service.UserServiceImpl;
 
 public class Main {
     public static void main(String[] args) {
-        UserService userService = new UserServiceImpl();
+        /*UserService userService = new UserServiceImpl();
 
         // Создание таблицы User(ов)
         userService.dropUsersTable();
@@ -39,6 +41,11 @@ public class Main {
         userService.cleanUsersTable();
 
         //Удаление таблицы
+        userService.dropUsersTable();*/
+
+        // Создание таблицы User(ов) через Hibernate
+        UserService userService = new UserServiceImpl();
         userService.dropUsersTable();
+        userService.createUsersTable();
     }
 }
