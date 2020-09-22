@@ -35,9 +35,6 @@ public class Util {
     public static class HibernateSessionFactoryUtil {
         private static SessionFactory sessionFactory;
 
-        private HibernateSessionFactoryUtil() {
-        }
-
         public static SessionFactory getSessionFactory() {
             if (sessionFactory == null) {
                 try {
@@ -48,10 +45,8 @@ public class Util {
                                     "mydb?useSSL=false&serverTimezone=UTC")
                             .setProperty("hibernate.connection.username", "root")
                             .setProperty("hibernate.connection.password", "root")
-                            .setProperty("hibernate.connection.autocommit", "true");
-                    /*//configuration.addAnnotatedClass(User.class);
-                    StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder()
-                            .applySettings(configuration.getProperties());*/
+                            .setProperty("hibernate.connection.autocommit", "true")
+                            .addAnnotatedClass(User.class);
                     sessionFactory = configuration.buildSessionFactory();
 
                 } catch (Exception ignore) {
